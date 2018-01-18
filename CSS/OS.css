@@ -1,0 +1,78 @@
+#Desktop{
+    background-color: azure;
+    border: solid 3px red;
+}
+
+#LocksCreen{
+    background-image: url("../Images/lock.jpg");
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#container{
+    background-image: url(../Images/lock_blur.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    left: 0;
+    right: 0;
+    margin-top: 10%;
+    border-radius: 10px;
+    box-shadow: 0 0 55px transparent;
+}
+/*
+#container > #profile-pic{
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 500px;
+    border: solid 2px gray;
+    width: inherit;
+    
+}
+*/
+#container > #password-field{
+    position: relative;
+    text-align: center;
+    margin: 30px;
+}
+
+#profile-pic{
+    background-image: url("https://content.halocdn.com/media/Default/games/halo-4/page/halo-4-square-542x542-5f6a1dbe533c498da85ab81c94b5b09d.jpg");
+    background-size: 100%;
+	background-repeat: no-repeat;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 500px;
+    
+}
+
+#password{
+    width: 25%;
+    height: 40px;
+    font-size: 35px;
+    text-align: center;
+}
+
+#login{
+    background-color: blueviolet;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: 0px 5px 20px 0 gray;
+}
+
+#userName{
+    color: white;
+    font-size: 40px;
+    font-family: verdana;
+}
