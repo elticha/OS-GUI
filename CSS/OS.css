@@ -1,6 +1,12 @@
 #Desktop{
-    background-color: azure;
-    border: solid 3px red;
+    background-image: url("../Images/lock.jpg");
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 #LocksCreen{
@@ -15,9 +21,7 @@
 }
 
 #container{
-    background-image: url(../Images/lock_blur.jpg);
-    background-size: cover;
-    background-attachment: fixed;
+    background: rgba(34,34,34,0.45);
     position: absolute;
     margin: 0 auto;
     width: 100%;
@@ -25,19 +29,8 @@
     left: 0;
     right: 0;
     margin-top: 10%;
-    border-radius: 10px;
     box-shadow: 0 0 55px transparent;
 }
-/*
-#container > #profile-pic{
-    margin: 0 auto;
-    margin-top: 20px;
-    border-radius: 500px;
-    border: solid 2px gray;
-    width: inherit;
-    
-}
-*/
 #container > #password-field{
     position: relative;
     text-align: center;
@@ -63,16 +56,28 @@
 }
 
 #login{
-    background-color: blueviolet;
+    border: none;
+    background-color: transparent;
     color: white;
     width: 50px;
     height: 50px;
-    border-radius: 50px;
-    box-shadow: 0px 5px 20px 0 gray;
+}
+
+#login > #unlock-img{
+    width: 40px;
+    height: 40px;
 }
 
 #userName{
     color: white;
     font-size: 40px;
     font-family: verdana;
+}
+
+#TaskBar{
+    position: fixed;    
+    width: 100%;
+    height: auto;
+    border: solid 1px rgb(34,34,34);
+    bottom: 0;
 }

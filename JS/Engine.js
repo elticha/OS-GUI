@@ -3,6 +3,10 @@ $(document).ready(function(){
     //$("#Desktop").show();
     //Mostramos únicamente el div de lockscreen
     
+    //Desenfocar el fondo de bloqueo
+    
+    
+    
     $("#login").click(function(e){
         $("#LockScreen").fadeOut(1000,function(){
             $("#LockScreen").hide();
