@@ -93,12 +93,24 @@ function createNewNote(){
 	notas_abiertas[notesCounter] = div_nota;
 	$(div_nota).appendTo(html);
 	$(function () {
-            //$("#notepad0").draggable();	
+        //Poder mover cada ventana creada	
 		for(var i = 0; i < notas_abiertas.length; i++){
 			var aux = "#notepad" + i;
 			$(aux).draggable();
-		}
+		}		
+		//Eliminar una ventana
+		/*
+		$("#close-note").click(function(e){
+			e.preventDefault();
+			var selectedNote = jQuery(".note").click().attr("id");
+			alert(selectedNote);
+			var selectedNote_ID = "#"+selectedNote;
+			$(selectedNote_ID).remove();
+			notesCounter--;
+		});
+		*/
     });
+
 	notesCounter++;
 }
 
