@@ -1,9 +1,15 @@
-$(document).ready(function(){
+var notesCounter = 0;
+var showing = false;
 
+$(document).ready(function(){
 	"use strict";
-	var showing = false;
+	$("#calculadora-container").hide();
     $("#Desktop").hide();
 	$("#TaskBar").hide();
+	
+	
+	$("#password").focus();
+	
 
 	// Abre herramienta LocalStorage
 	var banderaPrimeraVez= localStorage.getItem("banderaPrimeraVez");
@@ -13,12 +19,50 @@ $(document).ready(function(){
 		localStorage.setItem("password","12345");
 	}
 	// Cierra herramienta de LocalStorage
-
+	
 	// Abre inicio de sesión
     //Mostramos únicamente el div de lockscreen
+	
+	//Cuando detecte la tecla ENTER
+	
+	$("#password").on('keyup',function(e){
+		e.preventDefault();
+		if(e.keyCode == 13){
+			access();
+		}
+	});
+	
     $("#login").click(function(e){
 		e.preventDefault();
-		var inputUserPassword= document.getElementById("password").value;
+		access();
+	});
+	// Cierra inicio de sesión
+	
+	//Abrir el menú de inicio
+	$("#home-logo").click(function(e){
+		e.preventDefault();
+		if(!showing){
+			openMenu();
+			showing = true;
+		}else{
+			closeMenu();
+			showing = false;
+		}
+	});
+	
+	
+	//Abrir una nota
+	$("#start-notes").click(function(e){
+		e.preventDefault();
+		closeMenu();
+		showing = false;
+		createNewNote();
+	});
+});
+
+function access(){
+	"use strict";
+	var inputUserPassword = $("#password").val();
 		var storageUserPassword= localStorage.getItem("password");
 		if(inputUserPassword == storageUserPassword){
 			$("#login-fx").get(0).play();
@@ -31,29 +75,50 @@ $(document).ready(function(){
 				}).fadeIn(1000);
 				
 			}).fadeOut(1000);
-		}else
-			alert("Contraseña Incorecta");
-	});
-	// Cierra inicio de sesión
-	
-	//Abrir el menú de inicio
-	$("#home-logo").click(function(e){
-		e.preventDefault();
-		if(!showing){
-			$("#menu-div").animate({
-				'left':'0'
-			},500);	
-			showing = true;
 		}else{
-			$("#menu-div").animate({
-				'left':'-900'
-			},500);
-			showing = false;
+			alert("Contraseña Incorecta");
+			$("#password").val("");
 		}
-	});
-	// Cierra menú de inicio
-});
+}
 
+function createNewNote(){
+	"use strict";
+	var div_nota = "<div id='notepad" + notesCounter + "' class='note ui-widget-content'>" + 
+				   "<p id='note-header'> Nota " + notesCounter +
+				   "<button id='close-note'>X</button>" + 
+				   "</p>" + "<textarea id='note-content'> NOTA XD </textarea>" + "</div>";
+	var html = document.getElementsByTagName("body");
+	$(div_nota).appendTo(html);
+	
+	$(function () {
+            $("#notepad").draggable();		
+    });
+	
+	notesCounter++;
+}
+
+function openMenu(){
+	"use strict";
+	$("#menu-div").animate({
+		'left':'0'
+	},500);	
+}
+function closeMenu(){
+	"use strict";
+	$("#menu-div").animate({
+		'left':'-900'
+	},500);
+}
+/*
+
+<div id="notepad" class="note">
+        	<p>Nueva nota
+        		<button id="close-note">X</button>
+        	</p>
+        	<textarea id="note-content"> Soy una nota :v</textarea>
+		</div> 
+
+*/
 /*
 // CÓDIGO DE LA CALCULADORA
 // Aún no se ha implementado el uso de "." (punto). Por decir: 2.5, 1.2, 1.0, etc...

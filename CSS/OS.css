@@ -94,34 +94,89 @@
 }
 
 #menu-div{
-	background-color: rgba(237, 237, 237,0.8);
+	/*background-color: rgba(237, 237, 237,0.7);*/
+	/*background-color: rgba(43, 43, 43,0.6);*/
 	position: absolute;
+	background-image: url("../Images/lock.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	left: -900;
 	width: 15%;
 	padding: 20px;
-    bottom: 3em;
+    bottom: 2.5em;
     border-radius: 10px;
+	border: solid 0.5px rgba(202, 202, 202, 0.5);
 }
 #menu-div > ul > li{
 	left : 5px;
 	list-style-type: none;
 	font-family: verdana;
-	border-bottom: solid 1px rgb(34,34,34);
+	color: white;
+	/*border-bottom: solid 1px rgb(34,34,34);*/
 	margin-bottom: 5px;
 	height: 2em;
 	margin-left: -10px;
     width: 100%;
-	transition: background-color 1s, border-radius 1s, text-align 1s, order-bottom 1s, color 1s;
+	transition: background-color 0.3s, border-radius 0.3s, text-align 0.3s, order-bottom 0.3s, color 0.3s;
 }
 #menu-div > ul >li:hover{
-    background-color: rgb(216, 160, 57);
-    border-bottom: solid 1px rgb(158, 113, 28);
-    border-radius: 5px;
-    color: white;
-    text-align: center;
+	background-color: rgba(224, 224, 224,0.9);
+	/*rgba(237, 237, 237,0.7);*/
+    /*border-bottom: solid 0.5px rgb(34, 34, 34);*/
+	color: black;	
+	border-radius: 5px;
+	transition: ease-in-out 0.2s;
+	text-align: center;
+    /*border-radius: 5px;*/
+    /*color: white;*/
 }
 
 #menu-div > ul{
 	position: relative;
 	margin-left: -5px;
+}
+
+#calculadora-container{
+	display: none;
+}
+
+
+.note{
+	position: absolute;
+	display: inline-block;
+	width: auto;
+	height: auto: ;
+	background-color: rgb(242, 195, 65);
+}
+
+.note > #note-content {
+	background-color: rgb(244, 223, 66);
+	color: black;
+	min-width: 220px;
+	min-height: 130px;
+	max-height: 190px;
+	max-width: 300px;
+}
+
+.note > p{
+	width: auto;
+	text-align: center;
+	font-family: verdana;
+	font-size: 20px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.note > p > button{
+	position: absolute;
+	right: 5;
+	top: 0;
+	height: 25px;
+	border-radius: 90px;
+	border-style: none;
+	background-color: rgb(226, 49, 49);
+	color: white;
+	text-align: center;
 }
