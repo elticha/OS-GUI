@@ -51,13 +51,26 @@ $(document).ready(function(){
 		}
 	});
 	
-	
 	//Abrir una nota
 	$("#start-notes").click(function(e){
 		e.preventDefault();
 		closeMenu();
 		showing = false;
 		createNewNote();
+	});
+	
+	//Abrir la calculadora
+	$("#start-calc").click(function(e){
+		e.preventDefault();
+		closeMenu();
+		showing = false;
+		createNewCalc();
+	});
+	
+	//Cerrar la calculadora
+	$("#cerrar-calc").click(function(e){
+		e.preventDefault();
+		return false;
 	});
 });
 
@@ -95,6 +108,7 @@ function createNewNote(){
 		for(var i = 0; i < notas_abiertas.length; i++){
 			var aux = "#notepad" + i;
 			var aux_btn = "#close-note" + i;
+			
 			$(aux).draggable();
 			$(aux_btn).click(function(e){
 				e.preventDefault();
@@ -107,8 +121,14 @@ function createNewNote(){
 			});
 		}
     });
-
 	notesCounter++;
+}
+
+function createNewCalc(){
+	"use strict";
+	var calc_div = $("#calculadora-container");
+	calc_div.draggable();
+	$("#calculadora-container").show();
 }
 
 function openMenu(){
@@ -123,17 +143,7 @@ function closeMenu(){
 		'left':'-900'
 	},500);
 }
-/*
 
-<div id="notepad" class="note">
-        	<p>Nueva nota
-        		<button id="close-note">X</button>
-        	</p>
-        	<textarea id="note-content"> Soy una nota :v</textarea>
-		</div> 
-
-*/
-/*
 // CÓDIGO DE LA CALCULADORA
 // Aún no se ha implementado el uso de "." (punto). Por decir: 2.5, 1.2, 1.0, etc...
 // Sólo acepta números enteros por el momento, no decimales.
@@ -210,4 +220,3 @@ function resultado(){
 	num1=parseFloat(document.formi.ver.value); 
 	mostrado=""; 
 }
-*/

@@ -1,3 +1,4 @@
+html, body {margin: 0; height: 100%; overflow: hidden}
 #Desktop{
     background-image: url("../Images/desktop.jpg");
     position: absolute;
@@ -138,7 +139,11 @@
 }
 
 #calculadora-container{
-	display: none;
+	position: absolute;
+	background-image: url("../Images/lock.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 
@@ -174,6 +179,19 @@
 	position: absolute;
 	right: 5;
 	top: 0;
+	height: 25px;
+	border-radius: 90px;
+	border-style: none;
+	background-color: rgb(226, 49, 49);
+	color: white;
+	text-align: center;
+}
+
+.close{
+	position: absolute;
+	right: 5;
+	top: 0;
+	left: 100%;
 	height: 25px;
 	border-radius: 90px;
 	border-style: none;
