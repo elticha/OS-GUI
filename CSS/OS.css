@@ -1,5 +1,5 @@
 #Desktop{
-    background-image: url("../Images/lock.jpg");
+    background-image: url("../Images/desktop.jpg");
     position: absolute;
     left: 0;
     right: 0;
@@ -10,7 +10,7 @@
 }
 
 #LocksCreen{
-    background-image: url("../Images/lock.jpg");
+    background-image: url("../Images/lock.png");
     position: absolute;
     left: 0;
     right: 0;
@@ -21,15 +21,16 @@
 }
 
 #container{
-    background: rgba(34,34,34,0.45);
+    background: rgba(202, 202, 202, 0.226);  
     position: absolute;
     margin: 0 auto;
-    width: 100%;
+    width: 80%;
     height: auto;
     left: 0;
     right: 0;
-    margin-top: 10%;
+    margin-top: 5%;
     box-shadow: 0 0 55px transparent;
+    border-radius: 10p  x;
 }
 #container > #password-field{
     position: relative;
@@ -38,21 +39,22 @@
 }
 
 #profile-pic{
-    background-image: url("https://content.halocdn.com/media/Default/games/halo-4/page/halo-4-square-542x542-5f6a1dbe533c498da85ab81c94b5b09d.jpg");
+    background-image: url("../Images/logo.png");
     background-size: 100%;
 	background-repeat: no-repeat;
     width: 250px;
     height: 250px;
     margin: 0 auto;
     border-radius: 500px;
-    
+    margin-top: 50px;
 }
 
 #password{
     width: 25%;
     height: 40px;
-    font-size: 35px;
+    font-size: 20px;
     text-align: center;
+    top: 0px;
 }
 
 #login{
@@ -72,10 +74,11 @@
     color: white;
     font-size: 40px;
     font-family: verdana;
+
 }
 
 #TaskBar{
-	background-image: url(../Images/lock_blur.jpg);
+	background-image: url("../Images/lock.png");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -92,22 +95,30 @@
 
 #menu-div{
 	background-color: rgba(237, 237, 237,0.8);
-	border: solid 1px rgba(237, 237, 237,0.5);
 	position: absolute;
 	left: -900;
 	width: 15%;
 	padding: 20px;
-	bottom: 3em;
+    bottom: 3em;
+    border-radius: 10px;
 }
 #menu-div > ul > li{
 	left : 5px;
 	list-style-type: none;
 	font-family: verdana;
-	border: solid 1px rgb(34,34,34);
+	border-bottom: solid 1px rgb(34,34,34);
 	margin-bottom: 5px;
 	height: 2em;
 	margin-left: -10px;
-	width: 100%
+    width: 100%;
+	transition: background-color 1s, border-radius 1s, text-align 1s, order-bottom 1s, color 1s;
+}
+#menu-div > ul >li:hover{
+    background-color: rgb(216, 160, 57);
+    border-bottom: solid 1px rgb(158, 113, 28);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
 }
 
 #menu-div > ul{

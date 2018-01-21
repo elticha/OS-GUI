@@ -1,9 +1,11 @@
-<html>
+
+<html lang="es-MX">
     <head>
-        <title>FuckingOS</title>
+        <meta charset="utf-8" />
+        <title>Nameless OS</title>
         <script type="text/javascript" src="JS/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="JS/Engine.js"></script>
-        <link rel="stylesheet" type="text/css" href="CSS/OS.css">
+        <link rel="stylesheet" type="text/css" href="CSS/OS.css"/>
     </head>
     <body>
         <div id="Desktop">
@@ -15,7 +17,7 @@
            </div>
             <footer id="TaskBar">
                 <div id="home-btn">
-                    <img id="home-logo" src="Images/unlock.png">
+                    <img id="home-logo" src="Images/home.png"/>
                 </div>
             </footer>
         </div>
@@ -27,13 +29,32 @@
                 <div id="profile-pic">
                 </div>
                 <div id="password-field">
-                    <p id="userName">Luis Fernando</p>
+                    <p id="userName">Administrator</p>
                     <input type="text" id="password"/>
                     <button id="login"><img id="unlock-img" src="Images/unlock.png"></button>
                 </div>                
             </div>
         </div>
-        
-        
+
+        <!-- Código de la calculadora -->
+        <div align="center"> 
+            <table border="2"><tr ><td> 
+                <table><form name="formi" action="" method=""> 
+                <th colspan="4" ><input type="text" value=0 style="text-align:right" readonly="readonly" name="ver"/></th> 
+                <tr><b> 
+                <td width="34"><b><b> 
+                <input type="button" name="c" value="C" class="imagenbotom" style="text-align:center" onclick="nada()" /> 
+                </b></b></td> 
+                </b><td width="33"><input type="button" name="dividir" value="/" class="imagenbotom" style="text-align:center" onclick="operacion(4)" /></td><td width="33"><input type="button" name="multiplicar" value="*" class="imagenbotom" style="text-align:center" onclick="operacion(3)"/></td><td width="31"><input type="button" name="menos" value="-" class="imagenbotom" style="text-align:center" onclick="operacion(2)"/></td></tr> 
+                <tr><td><input type="button" name="siete" value=7 class="imagenbotom" style="text-align:center" onclick="mostrar(7)"/></td><td><input type="button" onclick="mostrar(8)"name="ocho" value="8" class="imagenbotom" style="text-align:center"/></td><td><input type="button" name="nueve" value="9" onclick="mostrar(9)" class="imagenbotom" style="text-align:center"/></td> 
+                <td rowspan="2"><input type="button" size="20" name="mas" value="+" class="imagenespecial" style="text-align:center" onclick="operacion(1)"/></td> 
+                </tr> 
+                <tr><td><input type="button" name="cuatro" value="4" onclick="mostrar(4)" class="imagenbotom" style="text-align:center"/></td><td><input type="button" name="cinco" onclick="mostrar(5)" value="5" class="imagenbotom" style="text-align:center"/></td><td><input type="button" name="seis" onclick="mostrar(6)" value="6" class="imagenbotom" style="text-align:center"/></td></tr> 
+                <tr><td><input type="button" name="uno" value="1" onclick="mostrar(1)" class="imagenbotom" style="text-align:center"/></td><td><input type="button"name="dos" onclick="mostrar(2)" value="2" class="imagenbotom" style="text-align:center"/></td><td><input type="button" name="tres" value="3" onclick="mostrar(3)" class="imagenbotom" style="text-align:center"/></td><td rowspan="2"><input type="button" name="igual" value="=" class="imagenespecial" style="text-align:center" onclick="resultado()"/></td></tr> 
+                <tr><td colspan="2"><input type="button" name="cero" value="0" class="especialimagen" style="text-align:center" onclick="mostrar(0)"/></td><td><input type="button"name="punto" value="." class="imagenbotom" style="text-align:center" onclick="mostrar(.)"/></td></tr> 
+                </form> 
+                </table></td></tr>
+            </table> 
+            </div> 
     </body>
 </html>
