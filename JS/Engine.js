@@ -1,5 +1,7 @@
 var notesCounter = 0;
 var showing = false;
+var notas_abiertas = [5];
+var max = 5;
 
 $(document).ready(function(){
 	"use strict";
@@ -7,7 +9,7 @@ $(document).ready(function(){
     $("#Desktop").hide();
 	$("#TaskBar").hide();
 	
-	
+	//Fijar la entrada de texto automaticamente en el campo de password
 	$("#password").focus();
 	
 
@@ -83,17 +85,20 @@ function access(){
 
 function createNewNote(){
 	"use strict";
-	var div_nota = "<div id='notepad" + notesCounter + "' class='note ui-widget-content'>" + 
+	var div_nota = "<div id='notepad" + notesCounter + "' class='note'>" + 
 				   "<p id='note-header'> Nota " + notesCounter +
 				   "<button id='close-note'>X</button>" + 
-				   "</p>" + "<textarea id='note-content'> NOTA XD </textarea>" + "</div>";
+				   "</p>" + "<textarea id='note-content'></textarea>" + "</div>";
 	var html = document.getElementsByTagName("body");
+	notas_abiertas[notesCounter] = div_nota;
 	$(div_nota).appendTo(html);
-	
 	$(function () {
-            $("#notepad").draggable();		
+            //$("#notepad0").draggable();	
+		for(var i = 0; i < notas_abiertas.length; i++){
+			var aux = "#notepad" + i;
+			$(aux).draggable();
+		}
     });
-	
 	notesCounter++;
 }
 
