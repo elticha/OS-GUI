@@ -1,7 +1,6 @@
 var notesCounter = 0;
 var showing = false;
 var notas_abiertas = [5];
-var max = 5;
 
 $(document).ready(function(){
 	"use strict";
@@ -86,8 +85,7 @@ function access(){
 function createNewNote(){
 	"use strict";
 	var div_nota = "<div id='notepad" + notesCounter + "' class='note'>" + 
-				   "<p id='note-header'> Nota " + notesCounter +
-				   "<button id='close-note'>X</button>" + 
+				   "<p id='note-header'> Nota " + notesCounter + "<button id='close-note"+ notesCounter + "'>X</button>" + 
 				   "</p>" + "<textarea id='note-content'></textarea>" + "</div>";
 	var html = document.getElementsByTagName("body");
 	notas_abiertas[notesCounter] = div_nota;
@@ -96,19 +94,18 @@ function createNewNote(){
         //Poder mover cada ventana creada	
 		for(var i = 0; i < notas_abiertas.length; i++){
 			var aux = "#notepad" + i;
+			var aux_btn = "#close-note" + i;
 			$(aux).draggable();
-		}		
-		//Eliminar una ventana
-		/*
-		$("#close-note").click(function(e){
-			e.preventDefault();
-			var selectedNote = jQuery(".note").click().attr("id");
-			alert(selectedNote);
-			var selectedNote_ID = "#"+selectedNote;
-			$(selectedNote_ID).remove();
-			notesCounter--;
-		});
-		*/
+			$(aux_btn).click(function(e){
+				e.preventDefault();
+				$(this).parent().parent().remove();
+				if(notesCounter > 1){
+					notesCounter--;
+				}else{
+					notesCounter = 0;
+				}
+			});
+		}
     });
 
 	notesCounter++;
