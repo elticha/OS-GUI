@@ -4,26 +4,29 @@ var notas_abiertas = [5];
 
 $(document).ready(function(){
 	"use strict";
+
 	$("#calculadora-container").hide();
     $("#Desktop").hide();
 	$("#TaskBar").hide();
 	
 	//Fijar la entrada de texto automaticamente en el campo de password
 	$("#password").focus();
-	
 
 	// Abre herramienta LocalStorage
 	var banderaPrimeraVez= localStorage.getItem("banderaPrimeraVez");
 	if(!banderaPrimeraVez || banderaPrimeraVez == null){
 		localStorage.setItem("banderaPrimeraVez","true");
-		localStorage.setItem("user","admin");
+		localStorage.setItem("user","Administrador");
 		localStorage.setItem("password","12345");
 	}
-	// Cierra herramienta de LocalStorage
 	
-	// Abre inicio de sesión
-    //Mostramos únicamente el div de lockscreen
+	$("#userName").text(localStorage.getItem("user"));
 	
+	//Evitar que el formulario refresque la página
+	$("#form_calc").submit(function(e){
+		e.preventDefault();
+		$("#calculadora-container").hide();
+	});
 	//Cuando detecte la tecla ENTER
 	
 	$("#password").on('keyup',function(e){
@@ -66,12 +69,6 @@ $(document).ready(function(){
 		showing = false;
 		createNewCalc();
 	});
-		
-	//Cerrar la calculadora
-	$("#cerrar-calc").click(function(e){
-		e.preventDefault();
-		$(this).parent().parent().remove();
-	});
 });
 
 function access(){
@@ -98,10 +95,26 @@ function access(){
 function createNewNote(){
 	"use strict";
 	//var dataNote;
-	var div_nota = "<div id='notepad" + notesCounter + "' class='note'>" + 
+	var div_nota = "<div id='notepad" + notesCounter + "' class='note'>" + "<button class= 'addNote'>+</button>" + 
 				   "<p id='note-header'> Nota " + (notesCounter+1) + "<button id='close-note"+ notesCounter + "'>X</button>" + 
 				   "</p>" + "<textarea id='note-content'></textarea>" + "</div>";
 	var html = document.getElementsByTagName("body");
+	
+	/*
+	
+	COPIADO DEL PROFESOR
+	
+	var body = document.getElementsByTagName("body");
+	var nota = document.createElement("div");
+	nota.setAttribute("class","nota");
+	body[0].appendChild(nota);
+	
+	var create = document.createElement("div");
+	create.setAttribute("class","create");
+	nota.appendChild(create);
+	$(".nota").draggable();
+	*/
+	
 	notas_abiertas[notesCounter] = div_nota;
 	/*for(key=0; key<localStorage.length; key++){
 		if(key == key)
@@ -119,7 +132,7 @@ function createNewNote(){
 			$(aux_btn).click(function(e){
 				e.preventDefault();
 				// Guardado (si aplica), de datos en LocalStorage
-				/*dataNote= $("#note-content").value;
+				/*dataNote= $("#note-content").value();
 				if(dataNote != null){
 					localStorage.setItem(i,dataNote);
 				}*/
@@ -133,6 +146,11 @@ function createNewNote(){
 		}
     });
 	notesCounter++;
+	
+	$(".addNote").click(function(e){
+		e.preventDefault();
+		createNewNote();
+	});
 }
 
 function createNewCalc(){
@@ -172,35 +190,37 @@ function nada(){
 	comprobador=0; 
 	operador=0; 
 	document.formi.ver.value=0;
+	return false;
 } 
 // Función de los operadores 
 function operacion(a){
 	switch (a){ 
 	case 1:
-		operador=1 
+		operador=1; 
 		document.formi.ver.value="+"; 
 		break; 
 	case 2: 
-		operador=2 
+		operador=2; 
 		document.formi.ver.value="-"; 
 		break; 
 	case 3: 
-		operador=3 
+		operador=3 ;
 		document.formi.ver.value="*"; 
 		break; 
 	case 4: 
-		operador=4 
+		operador=4; 
 		document.formi.ver.value="/"; 
 		break; 
 	default: ; // No hay nada xD
 	}
 	mostrado=""; 
-	comprobador=1; 
+	comprobador=1;
+	return false;
 } 
 
 // Función para que los botones se muestren en el input text 
 function mostrar(a){
-
+	"use strict";
 	mostrado=mostrado+a; 
 	document.formi.ver.value=mostrado; 
 
@@ -209,10 +229,12 @@ function mostrar(a){
 	}else if(comprobador==1){ 
 		num2=parseFloat(mostrado); 
 	}
+	return false;
 }
 
 // Función que hace el resultado 
-function resultado(){ 
+function resultado(){
+	"use strict";
 	switch (operador){ 
 	case 1: 
 		document.formi.ver.value=num1+num2; 
@@ -229,5 +251,14 @@ function resultado(){
 	default: ; // No hay nada xD
 	} 
 	num1=parseFloat(document.formi.ver.value); 
-	mostrado=""; 
+	mostrado="";
+	return false;
 }
+
+////////////////////////////////////////////////////
+
+//Apuntes 22/01/18
+
+
+
+

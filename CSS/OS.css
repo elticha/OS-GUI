@@ -120,6 +120,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 	margin-left: -10px;
     width: 100%;
 	transition: background-color 0.3s, border-radius 0.3s, text-align 0.3s, order-bottom 0.3s, color 0.3s;
+	cursor: pointer;
 }
 #menu-div > ul >li:hover{
 	background-color: rgba(224, 224, 224,0.9);
@@ -197,4 +198,16 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 	background-color: rgb(226, 49, 49);
 	color: white;
 	text-align: center;
+}
+.addNote{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 25px;
+	border-radius: 90px;
+	border-style: none;
+	background-color: rgb(226, 49, 49);
+	color: white;
+	text-align: center;
+	
 }
