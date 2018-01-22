@@ -66,11 +66,11 @@ $(document).ready(function(){
 		showing = false;
 		createNewCalc();
 	});
-	
+		
 	//Cerrar la calculadora
 	$("#cerrar-calc").click(function(e){
 		e.preventDefault();
-		return false;
+		$(this).parent().parent().remove();
 	});
 });
 
@@ -97,11 +97,16 @@ function access(){
 
 function createNewNote(){
 	"use strict";
+	//var dataNote;
 	var div_nota = "<div id='notepad" + notesCounter + "' class='note'>" + 
-				   "<p id='note-header'> Nota " + notesCounter + "<button id='close-note"+ notesCounter + "'>X</button>" + 
+				   "<p id='note-header'> Nota " + (notesCounter+1) + "<button id='close-note"+ notesCounter + "'>X</button>" + 
 				   "</p>" + "<textarea id='note-content'></textarea>" + "</div>";
 	var html = document.getElementsByTagName("body");
 	notas_abiertas[notesCounter] = div_nota;
+	/*for(key=0; key<localStorage.length; key++){
+		if(key == key)
+		dataNote= localStorage.getItem(key);
+	}*/
 	$(div_nota).appendTo(html);
 	$(function () {
         //Poder mover cada ventana creada	
@@ -110,8 +115,14 @@ function createNewNote(){
 			var aux_btn = "#close-note" + i;
 			
 			$(aux).draggable();
+			// Función de cerrar ventana
 			$(aux_btn).click(function(e){
 				e.preventDefault();
+				// Guardado (si aplica), de datos en LocalStorage
+				/*dataNote= $("#note-content").value;
+				if(dataNote != null){
+					localStorage.setItem(i,dataNote);
+				}*/
 				$(this).parent().parent().remove();
 				if(notesCounter > 1){
 					notesCounter--;
@@ -148,10 +159,10 @@ function closeMenu(){
 // Aún no se ha implementado el uso de "." (punto). Por decir: 2.5, 1.2, 1.0, etc...
 // Sólo acepta números enteros por el momento, no decimales.
 
-var num1=0,num2=0; 
+var num1=0, num2=0; 
 var mostrado=""; 
-comprobador=0; 
-operador=0; 
+var comprobador=0; 
+var operador=0; 
 
 // Función para borrar 
 function nada(){ 
@@ -179,7 +190,7 @@ function operacion(a){
 		break; 
 	case 4: 
 		operador=4 
-		document.formi.ver.value="div"; 
+		document.formi.ver.value="/"; 
 		break; 
 	default: ; // No hay nada xD
 	}
