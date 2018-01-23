@@ -1,6 +1,5 @@
 var notesCounter = 0;
 var showing = false;
-var notas_abiertas = [5];
 
 $(document).ready(function(){
 	"use strict";
@@ -94,12 +93,61 @@ function access(){
 
 function createNewNote(){
 	"use strict";
-	//var dataNote;
-	var div_nota = "<div id='notepad" + notesCounter + "' class='note'>" + "<button class= 'addNote'>+</button>" + 
-				   "<p id='note-header'> Nota " + (notesCounter+1) + "<button id='close-note"+ notesCounter + "'>X</button>" + 
-				   "</p>" + "<textarea id='note-content'></textarea>" + "</div>";
-	var html = document.getElementsByTagName("body");
-	
+    /*Estructura de una nota*/
+    /*
+    <div class="note" style="visibility: hidden">
+            <button class="addNote">+</button>
+            <p id="note-header">Nota
+                <button class="close-note">X</button>
+            </p>
+            <textarea id="note-content"></textarea>
+        </div>
+    */  
+    var body = document.getElementsByTagName("body");
+    var nota = document.createElement("DIV");
+    nota.setAttribute("class","note");
+    $(nota).css("visibility","visible");
+    
+    var button_add = document.createElement("BUTTON");
+    $(button_add).text("+");
+    button_add.setAttribute("class","addNote");
+    nota.appendChild(button_add);
+    
+    var noteTitle = document.createElement("P");
+    noteTitle.setAttribute("class","note-header");
+    $(noteTitle).text("Nueva Nota");
+    nota.appendChild(noteTitle);
+    
+    var closeNoteButton = document.createElement("BUTTON");
+    $(closeNoteButton).text("X");
+    closeNoteButton.setAttribute("class","close-note");
+    nota.appendChild(closeNoteButton);
+    
+    var textArea = document.createElement("TEXTAREA");
+    textArea.setAttribute("id","note-content");
+    nota.appendChild(textArea);
+    var noteTXT = localStorage.getItem(notesCounter);
+    $(textArea).val(noteTXT);
+    
+    body[0].appendChild(nota);
+    $(".note").draggable();
+    
+    $(button_add).click(function(e){
+        e.preventDefault();
+        createNewNote();
+    });
+    
+    $(closeNoteButton).click(function(e){
+        e.preventDefault();
+        $(this).parent().remove();
+        var txt = $(textArea).val();
+        if(txt != null || txt!= ""){
+            localStorage.setItem(notesCounter,$(textArea).val());   
+        }
+        notesCounter--;
+    });
+    
+    notesCounter++;
 	/*
 	
 	COPIADO DEL PROFESOR
@@ -114,43 +162,6 @@ function createNewNote(){
 	nota.appendChild(create);
 	$(".nota").draggable();
 	*/
-	
-	notas_abiertas[notesCounter] = div_nota;
-	/*for(key=0; key<localStorage.length; key++){
-		if(key == key)
-		dataNote= localStorage.getItem(key);
-	}*/
-	$(div_nota).appendTo(html);
-	$(function () {
-        //Poder mover cada ventana creada	
-		for(var i = 0; i < notas_abiertas.length; i++){
-			var aux = "#notepad" + i;
-			var aux_btn = "#close-note" + i;
-			
-			$(aux).draggable();
-			// Función de cerrar ventana
-			$(aux_btn).click(function(e){
-				e.preventDefault();
-				// Guardado (si aplica), de datos en LocalStorage
-				/*dataNote= $("#note-content").value();
-				if(dataNote != null){
-					localStorage.setItem(i,dataNote);
-				}*/
-				$(this).parent().parent().remove();
-				if(notesCounter > 1){
-					notesCounter--;
-				}else{
-					notesCounter = 0;
-				}
-			});
-		}
-    });
-	notesCounter++;
-	
-	$(".addNote").click(function(e){
-		e.preventDefault();
-		createNewNote();
-	});
 }
 
 function createNewCalc(){

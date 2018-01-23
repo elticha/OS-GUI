@@ -152,8 +152,10 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 	display: inline-block;
 	width: auto;
 	height: auto;
+    margin: 15px;
 	background-color: rgb(242, 195, 65);
 	box-shadow: 0 3px 15px 0 rgb(34,34,34);
+    cursor: all-scroll;
 }
 
 .note > #note-content {
@@ -173,6 +175,21 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 	height: 100%;
 	margin: 0;
 	padding: 0;
+    margin-left: 50px;
+    margin-right: 50px;
+    cursor: all-scroll;
+}
+
+.close-note{
+    position: absolute;
+	right: 5;
+	top: 0;
+	height: 25px;
+	border-radius: 90px;
+	border-style: none;
+	background-color: rgb(226, 49, 49);
+	color: white;
+	text-align: center;
 }
 
 .note > p > button{
